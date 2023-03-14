@@ -8,14 +8,14 @@ const router = express.Router();
 router.get("/",async (req,res)=>{
 
     const users = await User.find()
-    res.send(200,users)
+    res.status(200).send(users)
 })
 
 router.post("/", async (req,res)=>{
     console.log(req.body)
 
     const user = await User.create(req.body)
-    res.send(200, user)
+    res.status(200).send(user)
 })
 
 router.delete("/:id",async (req,res)=>{
