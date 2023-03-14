@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const userRoutes = require("./Routes/userRoute")
 
 const app = express();
+const port = process.env.PORT || 4000;
 app.use(express.json());
 
 app.use("/", userRoutes)
 
-mongoose.connect('mongodb+srv://sanjay:sanjay@cluster0.p0uxhax.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -20,6 +21,6 @@ db.once("open", function () {
   console.log(" database Connected successfully");
 });
 
-app.listen(4000, ()=>{
-    console.log("server is listening at 4000")
+app.listen(port, ()=>{
+    console.log("server is listening at ${port}")
 })
